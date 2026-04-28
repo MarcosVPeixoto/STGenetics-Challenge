@@ -1,0 +1,6 @@
+@STGenetics.Challenge_HostAddress = http://localhost:5282
+
+GET {{STGenetics.Challenge_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
