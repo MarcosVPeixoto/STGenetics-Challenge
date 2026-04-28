@@ -171,7 +171,7 @@ namespace STGenetics.Challenge.Tests.CommandTests
         }
 
         [Fact]
-        public async Task Handle_ShouldUpdateOrder_WhenCommandIsValid()
+        public async Task Handle_ShouldUpdateOrderRemovindAndAddingOrderItem_WhenCommandIsValid()
         {
             // Arrange
             var xburguer = new OrderItem() { OrderItemId = Guid.NewGuid(), MenuItemId = _xBurguer.MenuItemId, Quantity = 1, Price = _xBurguer.Price };

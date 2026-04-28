@@ -61,6 +61,39 @@ Isso pode ser refinado para melhorar a experiência de consumo da API.
 
 ---
 
+## 📌 Testes Unitários
+
+Os testes unitários cobrem os principais cenários de negócio, porém há uma oportunidade clara de melhoria na organização do código de teste.
+
+Atualmente, há repetição na criação de objetos complexos, como descontos e itens de menu (exemplo no arquivo de testes ), o que pode dificultar a manutenção e leitura.
+
+💡 **Melhor prática sugerida**:
+Utilizar o padrão **Builder** para construção de objetos nos testes, evitando repetição de código (*copy/paste*) e facilitando a criação de cenários variados.
+
+### Exemplo de melhoria:
+
+* Criar um `DiscountBuilder`
+* Criar um `MenuItemBuilder`
+* Permitir customização fluente (fluent API)
+
+```csharp
+var discount = new DiscountBuilder()
+    .WithPercentage(20)
+    .WithMenuItem(_xBurguer, 1)
+    .WithMenuItem(_batataFrita, 1)
+    .WithMenuItem(_refrigerante, 1)
+    .Build();
+```
+
+✅ Benefícios:
+
+* Redução de duplicação de código
+* Testes mais legíveis
+* Facilidade para alterar regras futuras
+* Centralização da criação de objetos de teste
+
+---
+
 ## 🚀 Como executar o projeto
 
 Para rodar o projeto localmente, execute o seguinte comando na pasta:
@@ -77,4 +110,4 @@ dotnet run
 
 ## ✅ Considerações finais
 
-O projeto atende aos requisitos principais do desafio, com foco em boas práticas de arquitetura e organização de código. Alguns pontos foram identificados para melhoria futura, principalmente em relação à modelagem de descontos e refinamento das mensagens de validação.
+O projeto atende aos requisitos principais do desafio, com foco em boas práticas de arquitetura e organização de código. Alguns pontos foram identificados para melhoria futura, principalmente em relação à modelagem de descontos, refinamento das mensagens de validação e organização dos testes unitários.
